@@ -3,15 +3,15 @@ echo 'hello ' . $_POST['F_ID'];
 if (isset($_POST['F_ID'])) {
     require 'connect.php';
 
-    $F_ID = $_POST['F_ID'];
-    $foodname =  $_POST['foodname'];
-    $price = $_POST['price'];
-    $menuID = $_POST['menuID'];
+    // $F_ID = $_POST['F_ID'];
+    // $foodname =  $_POST['foodname'];
+    // $price = $_POST['price'];
+    // $menuID = $_POST['menuID'];
 
-    echo 'F_ID = ' . $F_ID;
-    echo 'foodname = ' . $foodname;
-    echo 'price = ' . $price;
-    echo 'menuID = ' . $menuID;
+    // echo 'F_ID = ' . $F_ID;
+    // echo 'foodname = ' . $foodname;
+    // echo 'price = ' . $price;
+    // echo 'menuID = ' . $menuID;
 
 
 
@@ -20,7 +20,7 @@ if (isset($_POST['F_ID'])) {
             SET 
            foodname=:foodname,
            price =:price,
-           menuID = :menuID
+           M_ID = :menuID
             WHERE F_ID=:F_ID";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':F_ID', $_POST['F_ID']);
@@ -33,7 +33,7 @@ if (isset($_POST['F_ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
 
-    if ($stmt->rowCount() >= 0) {
+    if ($stmt->execute()) {
         echo '
         <script type="text/javascript">
         
